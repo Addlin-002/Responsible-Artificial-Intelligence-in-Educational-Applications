@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsible AI | Student Support</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+  <aside class="sidebar"><div class="logo">RA</div><div class="brand"><b>Responsible AI</b><small>Education Framework</small></div>
+    <nav><a class="active" href="#dashboard">▦ &nbsp; Dashboard</a><a href="#students">♙ &nbsp; Students</a><a href="#add-student">＋ &nbsp; Add student</a></nav>
+    <div class="side-note"><span></span><div><b>Human-guided insights</b><small>Recommendations, not decisions</small></div></div>
+  </aside>
+  <main class="main-content">
+    <header class="topbar"><div><p class="eyebrow">EDUCATIONAL APPLICATIONS</p><h1>Student support dashboard</h1><p class="muted">Understand performance patterns and identify students who may benefit from support.</p></div><button class="btn secondary" id="refresh-btn">↻ Refresh data</button></header>
+    <section id="dashboard" class="stats-grid">
+      <article class="stat"><div class="stat-label">Total students <span>♙</span></div><strong id="total-students">—</strong><small>Records in dataset</small></article>
+      <article class="stat"><div class="stat-label">Average score <span>◈</span></div><strong><i id="average-score">—</i><em>/ 100</em></strong><small>Across all students</small></article>
+      <article class="stat"><div class="stat-label">Average attendance <span>◷</span></div><strong><i id="average-attendance">—</i><em>%</em></strong><small>Attendance indicator</small></article>
+      <article class="stat"><div class="stat-label">High priority <span>!</span></div><strong id="high-priority">—</strong><small>Requires educator review</small></article>
+    </section>
+    <section class="columns">
+      <article class="panel" id="add-student"><div class="panel-title"><div><p class="eyebrow">STUDENT RECORDS</p><h2 id="form-title">Add a student</h2></div><span class="tag">CSV storage</span></div>
+        <form id="student-form"><div class="form-grid">
+          <label>Student ID<input id="student_id" placeholder="e.g. S013" required></label><label>Group<input id="group" placeholder="e.g. A" required></label>
+          <label>Attendance (%)<input id="attendance_pct" type="number" min="0" max="100" step="0.1" placeholder="0–100" required></label><label>Average score<input id="average_score" type="number" min="0" max="100" step="0.1" placeholder="0–100" required></label>
+          <label class="wide">Study hours per day<input id="study_hours" type="number" min="0" step="0.1" placeholder="e.g. 2.5" required></label></div>
+          <div class="form-actions"><button class="btn primary" id="save-btn" type="submit">＋ Add student</button><button class="btn secondary hidden" id="cancel-edit" type="button">Cancel edit</button></div><p id="form-message" class="message" role="status"></p>
+        </form>
+      </article>
+      <article class="panel"><div class="panel-title"><div><p class="eyebrow">RESPONSIBLE AI</p><h2>Support overview</h2></div><span class="spark">✦</span></div>
+        <div class="support-row"><span class="bubble red">!</span><div class="support-info"><b>High priority</b><small>Critical score or very low attendance</small></div><strong id="high-priority-detail">0</strong></div>
+        <div class="support-row"><span class="bubble amber">↗</span><div class="support-info"><b>Support recommended</b><small>One or more indicators triggered</small></div><strong id="support-count">0</strong></div>
+        <div class="support-row"><span class="bubble green">✓</span><div class="support-info"><b>No immediate flag</b><small>No configured rule triggered</small></div><strong id="no-flag-count">0</strong></div>
+        <div class="notice"><b>Human oversight matters</b><p>These indicators prompt educator review; they are not definitive judgments about a student's ability or circumstances.</p></div>
+      </article>
+    </section>
+    <section class="panel table-panel" id="students"><div class="table-heading"><div><p class="eyebrow">DATA EXPLORER</p><h2>Student records</h2><p class="muted">Search, inspect, update, or remove records.</p></div><input id="search-input" class="search" type="search" placeholder="⌕  Search ID or group..." aria-label="Search students"></div>
+      <div class="table-wrap"><table><thead><tr><th>Student</th><th>Group</th><th>Attendance</th><th>Average score</th><th>Study hours</th><th>Support status</th><th>Actions</th></tr></thead><tbody id="student-table-body"><tr><td colspan="7" class="empty">Loading student records…</td></tr></tbody></table></div>
+      <div class="table-footer"><span id="record-count">0 records</span><span>Stored locally in <code>data/students.csv</code></span></div>
+    </section>
+    <footer>Responsible AI Framework · Educational decision support · Keep student data private</footer>
+  </main>
+  <div class="modal-backdrop hidden" id="details-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal"><button class="modal-close" id="close-modal" aria-label="Close details">×</button><p class="eyebrow">EXPLAINABLE RULES</p><h2 id="modal-title">Support explanation</h2><div id="modal-content"></div><p class="modal-note">This is a rule-based recommendation. An educator should consider additional context before acting.</p></div></div>
+  <div class="toast" id="toast" role="status"></div>
+</body></html>
