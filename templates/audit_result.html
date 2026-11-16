@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Audit Results | ResponsibleAI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/audit_result.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="result-body">
+
+    <header class="dashboard-header">
+        <a href="/dashboard" class="dashboard-logo">ResponsibleAI</a>
+
+        <nav class="dashboard-nav">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/audit">New Audit</a>
+            <button class="logout-button" id="logoutButton">Logout</button>
+        </nav>
+    </header>
+
+    <main class="result-container">
+
+        <section class="result-heading">
+            <span class="section-tag">AI AUDIT REPORT</span>
+            <h1>Content Analysis Results</h1>
+            <p>Review the responsible AI assessment and factual verification of your submitted educational content.</p>
+        </section>
+
+        <section id="resultContent">
+
+            <div class="overall-result">
+                <div>
+                    <span class="result-label">OVERALL RISK LEVEL</span>
+                    <h2 id="overallRisk">Loading...</h2>
+                    <p id="overallExplanation">Preparing your audit report...</p>
+                </div>
+
+                <div class="score-circle">
+                    <span id="overallScore">--</span>
+                    <small>/100</small>
+                </div>
+            </div>
+
+            <section class="submitted-content">
+                <h2>Submitted Content</h2>
+                <p id="submittedText"></p>
+
+                <div class="submission-details">
+                    <span>Type: <strong id="contentType"></strong></span>
+                    <span>Level: <strong id="educationLevel"></strong></span>
+                    <span>Subject: <strong id="subject"></strong></span>
+                </div>
+            </section>
+
+            <section class="dimensions-section">
+                <h2>Four Auditing Dimensions</h2>
+                <div id="dimensionResults" class="dimension-grid"></div>
+            </section>
+
+            <!-- NEW: FACTUAL ACCURACY VERIFICATION -->
+            <section class="fact-check-section">
+                <div class="fact-check-heading">
+                    <span class="section-tag">EVIDENCE-BASED VERIFICATION</span>
+                    <h2>Factual Accuracy & Evidence Verification</h2>
+                    <p>
+                        Factual claims have been compared with information
+                        retrieved from external sources.
+                    </p>
+                </div>
+
+                <div class="fact-check-summary">
+                    <div>
+                        <span>Total Claims Checked</span>
+                        <h3 id="totalClaims">0</h3>
+                    </div>
+                </div>
+
+                <div id="factCheckResults" class="fact-check-grid"></div>
+
+                <p id="factCheckMessage" class="fact-check-message"></p>
+
+                <p class="fact-check-disclaimer">
+                    Verification results are AI-generated assessments of
+                    retrieved evidence. Always review the cited sources
+                    before relying on a factual claim.
+                </p>
+            </section>
+            <!-- END NEW SECTION -->
+
+            <section class="recommendations-section">
+                <h2>Recommendations</h2>
+                <ul id="recommendationsList"></ul>
+            </section>
+
+            <section class="review-section">
+                <h2>Human Review</h2>
+                <p id="humanReview"></p>
+            </section>
+
+            <section class="limitations-section">
+                <h2>Limitations</h2>
+                <ul id="limitationsList"></ul>
+            </section>
+
+        </section>
+
+        <div class="result-actions">
+            <a href="/audit" class="btn btn-primary">Analyze Another Content</a>
+            <a href="/dashboard" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
+
+        <p id="resultMessage"></p>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='js/audit_result.js') }}"></script>
+
+</body>
+</html>
+   

@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | ResponsibleAI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="dashboard-navbar">
+
+        <a href="/" class="logo">
+            <span class="logo-icon">R</span>
+            <span>Responsible<span class="logo-highlight">AI</span></span>
+        </a>
+
+        <div class="dashboard-user">
+            <span id="userName">{{ user_name }}</span>
+            <button id="logoutButton" class="btn btn-secondary">Logout</button>
+        </div>
+
+    </header>
+
+
+    <main class="dashboard-container">
+
+        <section class="welcome-section">
+
+            <div>
+                <span class="section-tag">USER DASHBOARD</span>
+
+                <h1>Welcome back, <span id="welcomeName">{{ user_name }}</span>!</h1>
+
+                <p>
+                    Monitor educational content and promote responsible
+                    AI through intelligent auditing.
+                </p>
+            </div>
+
+        </section>
+
+
+        <section class="dashboard-stats">
+
+            <article class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div>
+                    <p>Total Audits</p>
+                    <h2 id="totalAudits">0</h2>
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-icon">🟢</div>
+                <div>
+                    <p>Low Risk Audits</p>
+                    <h2 id="lowRiskAudits">0</h2>
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-icon">🟠</div>
+                <div>
+                    <p>Medium Risk Audits</p>
+                    <h2 id="mediumRiskAudits">0</h2>
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-icon">🔴</div>
+                <div>
+                    <p>High Risk Audits</p>
+                    <h2 id="highRiskAudits">0</h2>
+                </div>
+            </article>
+
+        </section>
+
+
+        <section class="dashboard-main">
+
+            <div class="dashboard-card audit-action">
+
+                <div class="card-icon">✦</div>
+
+                <h2>Start a New Audit</h2>
+
+                <p>
+                    Submit educational content and let our AI-powered
+                    framework evaluate it across four responsible
+                    AI dimensions.
+                </p>
+
+                <a href="/audit" class="btn btn-primary">
+                    Analyze Content →
+                </a>
+
+            </div>
+
+
+            <div class="dashboard-card history-action">
+
+                <div class="card-icon">📁</div>
+
+                <h2>Audit History</h2>
+
+                <p>
+                    Review your previously submitted content,
+                    audit reports and recommendations.
+                </p>
+
+                <a href="/history" class="btn btn-secondary">
+                    View History →
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <section class="recent-audits">
+
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">YOUR ACTIVITY</span>
+                    <h2>Recent Audits</h2>
+                </div>
+
+                <a href="/history">View All →</a>
+            </div>
+
+            <div class="dashboard-card empty-state">
+                <div class="empty-icon">📄</div>
+
+                <h3>No recent audits yet</h3>
+
+                <p>
+                    Your audit reports will appear here once you
+                    start analyzing educational content.
+                </p>
+
+                <a href="/audit" class="btn btn-primary">
+                    Start Your First Audit
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+        <p>Responsible AI Framework for Educational Applications</p>
+        <span class="copyright">© 2026 ResponsibleAI</span>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+</body>
+</html>

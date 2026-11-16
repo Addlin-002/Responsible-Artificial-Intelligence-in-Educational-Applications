@@ -1,0 +1,134 @@
+
+.audit-body {
+    margin: 0;
+    min-height: 100vh;
+    background: #0b1020;
+    color: #f1f5f9;
+    font-family: Arial, sans-serif;
+}
+
+.audit-container {
+    width: 86%;
+    max-width: 1100px;
+    margin: 50px auto;
+}
+
+.audit-heading {
+    margin-bottom: 35px;
+}
+
+.audit-heading h1 {
+    font-size: 32px;
+    margin: 15px 0;
+}
+
+.audit-heading p {
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+.audit-form-section {
+    background: #151e33;
+    border: 1px solid #293650;
+    border-radius: 14px;
+    padding: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #e2e8f0;
+}
+
+.form-group textarea,
+.form-group input,
+.form-group select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    background: #0b1020;
+    color: #f1f5f9;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+}
+
+.form-group textarea {
+    min-height: 230px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.form-group textarea:focus,
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #8b5cf6;
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+.character-count {
+    text-align: right;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+#auditForm button {
+    background: #7c3aed;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#auditForm button:hover {
+    background: #6d28d9;
+}
+
+#auditForm button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#auditMessage {
+    margin-top: 18px;
+    color: #c4b5fd;
+}
+
+@media (max-width: 768px) {
+    .audit-container {
+        width: 90%;
+    }
+
+    .audit-form-section {
+        padding: 20px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .audit-heading h1 {
+        font-size: 26px;
+    }
+}

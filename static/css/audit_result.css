@@ -1,0 +1,300 @@
+
+/* ========================================
+   GLOBAL STYLES
+======================================== */
+
+.result-body {
+    margin: 0;
+    min-height: 100vh;
+    background: #0b1020;
+    color: #f1f5f9;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+.result-container {
+    width: 86%;
+    max-width: 1100px;
+    margin: 45px auto;
+}
+
+/* ========================================
+   PAGE HEADING
+======================================== */
+
+.result-heading {
+    margin-bottom: 30px;
+}
+
+.result-heading h1 {
+    font-size: 32px;
+    margin: 15px 0 10px;
+}
+
+.result-heading p {
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+/* ========================================
+   OVERALL RESULT
+======================================== */
+
+.overall-result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    padding: 30px;
+    background: #151e33;
+    border: 1px solid #293650;
+    border-radius: 14px;
+    margin-bottom: 25px;
+}
+
+.result-label {
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.overall-result h2 {
+    font-size: 30px;
+    color: #34d399;
+    margin: 12px 0;
+}
+
+.overall-result p {
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+/* ========================================
+   SCORE CIRCLE
+======================================== */
+
+.score-circle {
+    width: 115px;
+    height: 115px;
+    min-width: 115px;
+    box-sizing: border-box;
+
+    border: 8px solid #34d399;
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+
+    flex-shrink: 0;
+    overflow: visible;
+}
+
+#overallScore {
+    display: inline-block;
+    color: #ffffff !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 28px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    position: relative;
+    z-index: 10;
+}
+
+.score-circle small {
+    display: inline-block;
+    color: #94a3b8;
+    font-size: 13px;
+    line-height: 1;
+}
+
+/* ========================================
+   COMMON CONTENT SECTIONS
+======================================== */
+
+.submitted-content,
+.dimensions-section,
+.recommendations-section,
+.review-section,
+.limitations-section {
+    background: #151e33;
+    border: 1px solid #293650;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.submitted-content h2,
+.dimensions-section h2,
+.recommendations-section h2,
+.review-section h2,
+.limitations-section h2 {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+/* ========================================
+   SUBMITTED CONTENT
+======================================== */
+
+#submittedText {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    line-height: 1.7;
+    color: #cbd5e1;
+    background: #0b1020;
+    padding: 18px;
+    border-radius: 8px;
+}
+
+.submission-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 18px;
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+.submission-details strong {
+    color: #e2e8f0;
+}
+
+/* ========================================
+   DIMENSION CARDS
+======================================== */
+
+.dimension-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.dimension-card {
+    background: #0b1020;
+    border: 1px solid #293650;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.dimension-card h3 {
+    font-size: 16px;
+    margin-top: 0;
+}
+
+.dimension-risk {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.risk-low {
+    color: #34d399;
+    background: rgba(52, 211, 153, 0.12);
+}
+
+.risk-medium {
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.12);
+}
+
+.risk-high {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.12);
+}
+
+.dimension-card p {
+    color: #94a3b8;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.dimension-score {
+    color: #a78bfa;
+    font-weight: bold;
+}
+
+/* ========================================
+   FINDINGS AND LISTS
+======================================== */
+
+.recommendations-section ul,
+.limitations-section ul {
+    padding-left: 22px;
+    color: #cbd5e1;
+    line-height: 1.9;
+}
+
+.findings-list {
+    padding-left: 20px;
+    color: #cbd5e1;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* ========================================
+   HUMAN REVIEW
+======================================== */
+
+.review-section p {
+    color: #cbd5e1;
+    line-height: 1.6;
+}
+
+/* ========================================
+   RESULT ACTIONS
+======================================== */
+
+.result-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+#resultMessage {
+    color: #f87171;
+    margin-top: 15px;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 768px) {
+
+    .result-container {
+        width: 90%;
+    }
+
+    .overall-result {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dimension-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-heading h1 {
+        font-size: 26px;
+    }
+
+    .submitted-content,
+    .dimensions-section,
+    .recommendations-section,
+    .review-section,
+    .limitations-section {
+        padding: 18px;
+    }
+}

@@ -1,0 +1,194 @@
+
+.history-body {
+    margin: 0;
+    min-height: 100vh;
+    background: #0b1020;
+    color: #f1f5f9;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+.history-container {
+    width: 86%;
+    max-width: 1100px;
+    margin: 45px auto;
+}
+
+.history-heading {
+    margin-bottom: 35px;
+}
+
+.history-heading h1 {
+    font-size: 32px;
+    margin: 15px 0 10px;
+}
+
+.history-heading p {
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+/* Search and Filters */
+.history-filters {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.history-filters input,
+.history-filters select {
+    padding: 14px;
+    background: #151e33;
+    border: 1px solid #293650;
+    border-radius: 8px;
+    color: #f1f5f9;
+    font-size: 14px;
+    outline: none;
+}
+
+.history-filters input:focus,
+.history-filters select:focus {
+    border-color: #8b5cf6;
+}
+
+.history-filters input::placeholder {
+    color: #64748b;
+}
+
+/* History Section */
+.history-section {
+    background: #151e33;
+    border: 1px solid #293650;
+    border-radius: 14px;
+    padding: 25px;
+}
+
+#historyMessage {
+    color: #94a3b8;
+    text-align: center;
+    padding: 25px 10px;
+}
+
+/* Individual Audit Cards */
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.history-card {
+    background: #0b1020;
+    border: 1px solid #293650;
+    border-radius: 10px;
+    padding: 22px;
+    transition: 0.2s ease;
+}
+
+.history-card:hover {
+    border-color: #7c3aed;
+}
+
+.history-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.history-card h3 {
+    font-size: 17px;
+    margin: 0;
+}
+
+.history-card p {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.history-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    color: #94a3b8;
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+.history-risk {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.history-risk.low {
+    color: #34d399;
+    background: rgba(52, 211, 153, 0.12);
+}
+
+.history-risk.medium {
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.12);
+}
+
+.history-risk.high {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.12);
+}
+
+.history-actions {
+    margin-top: 18px;
+}
+
+.view-report-button {
+    display: inline-block;
+    padding: 10px 16px;
+    background: #7c3aed;
+    color: white;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.view-report-button:hover {
+    background: #6d28d9;
+}
+
+/* Empty State */
+.history-empty {
+    text-align: center;
+    padding: 40px 15px;
+    color: #94a3b8;
+}
+
+.history-empty h3 {
+    color: #f1f5f9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .history-container {
+        width: 90%;
+    }
+
+    .history-filters {
+        grid-template-columns: 1fr;
+    }
+
+    .history-section {
+        padding: 15px;
+    }
+
+    .history-card-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .history-heading h1 {
+        font-size: 26px;
+    }
+}

@@ -1,46 +1,279 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsible AI | Student Support</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Responsible AI | Educational AI Auditing</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <aside class="sidebar"><div class="logo">RA</div><div class="brand"><b>Responsible AI</b><small>Education Framework</small></div>
-    <nav><a class="active" href="#dashboard">▦ &nbsp; Dashboard</a><a href="#students">♙ &nbsp; Students</a><a href="#add-student">＋ &nbsp; Add student</a></nav>
-    <div class="side-note"><span></span><div><b>Human-guided insights</b><small>Recommendations, not decisions</small></div></div>
-  </aside>
-  <main class="main-content">
-    <header class="topbar"><div><p class="eyebrow">EDUCATIONAL APPLICATIONS</p><h1>Student support dashboard</h1><p class="muted">Understand performance patterns and identify students who may benefit from support.</p></div><button class="btn secondary" id="refresh-btn">↻ Refresh data</button></header>
-    <section id="dashboard" class="stats-grid">
-      <article class="stat"><div class="stat-label">Total students <span>♙</span></div><strong id="total-students">—</strong><small>Records in dataset</small></article>
-      <article class="stat"><div class="stat-label">Average score <span>◈</span></div><strong><i id="average-score">—</i><em>/ 100</em></strong><small>Across all students</small></article>
-      <article class="stat"><div class="stat-label">Average attendance <span>◷</span></div><strong><i id="average-attendance">—</i><em>%</em></strong><small>Attendance indicator</small></article>
-      <article class="stat"><div class="stat-label">High priority <span>!</span></div><strong id="high-priority">—</strong><small>Requires educator review</small></article>
-    </section>
-    <section class="columns">
-      <article class="panel" id="add-student"><div class="panel-title"><div><p class="eyebrow">STUDENT RECORDS</p><h2 id="form-title">Add a student</h2></div><span class="tag">CSV storage</span></div>
-        <form id="student-form"><div class="form-grid">
-          <label>Student ID<input id="student_id" placeholder="e.g. S013" required></label><label>Group<input id="group" placeholder="e.g. A" required></label>
-          <label>Attendance (%)<input id="attendance_pct" type="number" min="0" max="100" step="0.1" placeholder="0–100" required></label><label>Average score<input id="average_score" type="number" min="0" max="100" step="0.1" placeholder="0–100" required></label>
-          <label class="wide">Study hours per day<input id="study_hours" type="number" min="0" step="0.1" placeholder="e.g. 2.5" required></label></div>
-          <div class="form-actions"><button class="btn primary" id="save-btn" type="submit">＋ Add student</button><button class="btn secondary hidden" id="cancel-edit" type="button">Cancel edit</button></div><p id="form-message" class="message" role="status"></p>
-        </form>
-      </article>
-      <article class="panel"><div class="panel-title"><div><p class="eyebrow">RESPONSIBLE AI</p><h2>Support overview</h2></div><span class="spark">✦</span></div>
-        <div class="support-row"><span class="bubble red">!</span><div class="support-info"><b>High priority</b><small>Critical score or very low attendance</small></div><strong id="high-priority-detail">0</strong></div>
-        <div class="support-row"><span class="bubble amber">↗</span><div class="support-info"><b>Support recommended</b><small>One or more indicators triggered</small></div><strong id="support-count">0</strong></div>
-        <div class="support-row"><span class="bubble green">✓</span><div class="support-info"><b>No immediate flag</b><small>No configured rule triggered</small></div><strong id="no-flag-count">0</strong></div>
-        <div class="notice"><b>Human oversight matters</b><p>These indicators prompt educator review; they are not definitive judgments about a student's ability or circumstances.</p></div>
-      </article>
-    </section>
-    <section class="panel table-panel" id="students"><div class="table-heading"><div><p class="eyebrow">DATA EXPLORER</p><h2>Student records</h2><p class="muted">Search, inspect, update, or remove records.</p></div><input id="search-input" class="search" type="search" placeholder="⌕  Search ID or group..." aria-label="Search students"></div>
-      <div class="table-wrap"><table><thead><tr><th>Student</th><th>Group</th><th>Attendance</th><th>Average score</th><th>Study hours</th><th>Support status</th><th>Actions</th></tr></thead><tbody id="student-table-body"><tr><td colspan="7" class="empty">Loading student records…</td></tr></tbody></table></div>
-      <div class="table-footer"><span id="record-count">0 records</span><span>Stored locally in <code>data/students.csv</code></span></div>
-    </section>
-    <footer>Responsible AI Framework · Educational decision support · Keep student data private</footer>
-  </main>
-  <div class="modal-backdrop hidden" id="details-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal"><button class="modal-close" id="close-modal" aria-label="Close details">×</button><p class="eyebrow">EXPLAINABLE RULES</p><h2 id="modal-title">Support explanation</h2><div id="modal-content"></div><p class="modal-note">This is a rule-based recommendation. An educator should consider additional context before acting.</p></div></div>
-  <div class="toast" id="toast" role="status"></div>
-</body></html>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <a href="/" class="logo">
+            <span class="logo-icon">R</span>
+            <span>Responsible<span class="logo-highlight">AI</span></span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#framework">Framework</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="/login" class="login-link">Log in</a>
+            <a href="/register" class="btn btn-primary">Get Started</a>
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    <span class="status-dot"></span>
+                    RESPONSIBLE AI FOR EDUCATION
+                </div>
+
+                <h1>
+                    Making AI in Education
+                    <span>Safer, Fairer & Smarter.</span>
+                </h1>
+
+                <p class="hero-description">
+                    An intelligent auditing platform designed to evaluate
+                    educational content for safety, fairness, academic
+                    integrity and pedagogical relevance.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="/register" class="btn btn-primary btn-large">
+                        Start Auditing <span>→</span>
+                    </a>
+
+                    <a href="#about" class="btn btn-secondary btn-large">
+                        Explore Framework
+                    </a>
+                </div>
+
+                <div class="hero-note">
+                    <span>✓</span> AI-powered analysis
+                    <span>✓</span> Four-dimensional evaluation
+                    <span>✓</span> Transparent reporting
+                </div>
+
+            </div>
+
+
+            <!-- Audit Preview -->
+            <div class="hero-visual">
+
+                <div class="preview-card">
+
+                    <div class="preview-header">
+                        <div>
+                            <span class="preview-label">AUDIT OVERVIEW</span>
+                            <h3>Content Analysis</h3>
+                        </div>
+
+                        <span class="live-badge">
+                            <span class="status-dot"></span>
+                            AI Powered
+                        </span>
+                    </div>
+
+                    <div class="score-section">
+                        <div class="score-circle">
+                            <div>
+                                <strong>92</strong>
+                                <small>/100</small>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4>Responsible AI Score</h4>
+                            <p>Illustrative audit preview</p>
+                            <span class="risk-label">Low Risk</span>
+                        </div>
+                    </div>
+
+                    <div class="dimension-list">
+
+                        <div class="dimension">
+                            <span class="dimension-icon safety">✓</span>
+                            <span>Safety & Toxicity</span>
+                            <strong>Low Risk</strong>
+                        </div>
+
+                        <div class="dimension">
+                            <span class="dimension-icon fairness">✓</span>
+                            <span>Fairness & Bias</span>
+                            <strong>Low Risk</strong>
+                        </div>
+
+                        <div class="dimension">
+                            <span class="dimension-icon integrity">✓</span>
+                            <span>Academic Integrity</span>
+                            <strong>Low Risk</strong>
+                        </div>
+
+                        <div class="dimension">
+                            <span class="dimension-icon pedagogy">✓</span>
+                            <span>Pedagogical Relevance</span>
+                            <strong>Low Risk</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="preview-footer">
+                        <span>Responsible AI Framework</span>
+                        <span>Sample Report</span>
+                    </div>
+
+                </div>
+
+                <div class="floating-tag">
+                    <span>✦</span> Intelligent Content Auditing
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- About Section -->
+        <section class="about section-padding" id="about">
+
+            <div class="section-heading">
+                <span class="section-tag">WHY RESPONSIBLE AI?</span>
+
+                <h2>
+                    AI is transforming education.
+                    <span>But is it responsible?</span>
+                </h2>
+
+                <p>
+                    Generative AI can support learning, but it can also
+                    produce harmful content, reinforce stereotypes,
+                    generate misleading information and encourage
+                    academic dishonesty.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- Features Section -->
+        <section class="features section-padding" id="features">
+
+            <div class="section-heading">
+                <span class="section-tag">OUR CAPABILITIES</span>
+                <h2>What does our platform do?</h2>
+                <p>
+                    Evaluate educational content through four essential
+                    dimensions of responsible AI.
+                </p>
+            </div>
+
+            <div class="feature-grid">
+
+                <article class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Safety & Toxicity</h3>
+                    <p>
+                        Identifies potentially harmful, abusive,
+                        toxic or inappropriate content.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">⚖️</div>
+                    <h3>Fairness & Bias</h3>
+                    <p>
+                        Evaluates stereotypes, discriminatory
+                        assumptions and unequal representation.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Academic Integrity</h3>
+                    <p>
+                        Flags content that may encourage cheating,
+                        plagiarism or unsupported claims.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Pedagogical Relevance</h3>
+                    <p>
+                        Evaluates clarity, educational suitability,
+                        reading level and learning relevance.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- Framework Section -->
+        <section class="framework section-padding" id="framework">
+
+            <div class="framework-content">
+                <span class="section-tag">OUR APPROACH</span>
+
+                <h2>
+                    Building trust in
+                    <span>educational AI.</span>
+                </h2>
+
+                <p>
+                    Our framework combines AI-powered content evaluation
+                    with structured risk reporting and historical audit
+                    records. It is designed to support educators and
+                    institutions in making more informed decisions.
+                </p>
+
+                <a href="/register" class="btn btn-primary">
+                    Get Started →
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <a href="/" class="logo">
+            <span class="logo-icon">R</span>
+            <span>Responsible<span class="logo-highlight">AI</span></span>
+        </a>
+
+        <p>
+            Promoting safer, fairer and more responsible AI in education.
+        </p>
+
+        <span class="copyright">
+            © 2026 Responsible AI Framework for Educational Applications
+        </span>
+    </footer>
+
+</body>
+</html>

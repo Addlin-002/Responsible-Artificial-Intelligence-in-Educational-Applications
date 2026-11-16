@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Audit History | ResponsibleAI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/history.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="history-body">
+
+    <header class="dashboard-header">
+        <a href="/dashboard" class="dashboard-logo">ResponsibleAI</a>
+
+        <nav class="dashboard-nav">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/audit">New Audit</a>
+            <button class="logout-button" id="logoutButton">Logout</button>
+        </nav>
+    </header>
+
+    <main class="history-container">
+
+        <section class="history-heading">
+            <span class="section-tag">YOUR ACTIVITY</span>
+            <h1>Audit History</h1>
+            <p>View and manage your previously submitted educational content audits.</p>
+        </section>
+
+        <section class="history-filters">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by subject or content..."
+            >
+
+            <select id="riskFilter">
+                <option value="all">All Risk Levels</option>
+                <option value="Low">Low Risk</option>
+                <option value="Medium">Medium Risk</option>
+                <option value="High">High Risk</option>
+            </select>
+
+        </section>
+
+        <section class="history-section">
+
+            <div id="historyMessage">Loading your audit history...</div>
+
+            <div id="historyList" class="history-list"></div>
+
+        </section>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='js/history.js') }}"></script>
+
+</body>
+</html>
